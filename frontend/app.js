@@ -1,14 +1,13 @@
-const { createApp } = Vue;
+import { createApp } from 'vue';
+import HomePage from './src/pages/HomePage.vue';
 
-createApp({
-  data() {
-    return {
-      count: 0
-    }
-  },
-  async mounted() {
-    const response = await fetch('/api/ping');
-    const data = await response.json();
-    this.count = data.count;
-  }
-}).mount('#app');
+// Création de l'application Vue
+const app = createApp({
+  template: '<HomePage />'
+});
+
+// Enregistrement des composants globaux (si nécessaire)
+app.component('HomePage', HomePage);
+
+// Montage de l'application
+app.mount('#app');
